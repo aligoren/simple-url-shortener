@@ -115,7 +115,9 @@ if (!empty($_GET['url'])) {
         <div class="row">
             <div class="col-md-6 center">
                 <div class="result">
-                    <?php if (!empty($_GET['s'])): ?>
+                    <?php 
+                    /*http://0w1.xyz/?s="http* şeklinde durumları filtrelemiyordu. bir test edersiniz?*/
+                    if (!empty($_GET['s']) and substr( $string_n, 0, 7 ) === "http://" or substr( $string_n, 0, 7 ) === "https://"): ?>
                         <div class="alert alert-success" role="alert">Short Url:<a
                                 href="<?php echo $server_name; ?><?php echo $_GET['s']; ?>"
                                 target="_blank"><?php echo $server_name; ?><?php echo $_GET['s']; ?></a><br>
